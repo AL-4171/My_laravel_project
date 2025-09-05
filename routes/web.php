@@ -31,30 +31,30 @@ Route::prefix('admin')->group(function(){
 });
 
 
-// Likes
+
 Route::get('likes', [\App\Http\Controllers\LikeController::class,'index'])->name('likes.index');
 Route::post('posts/{post}/like', [\App\Http\Controllers\LikeController::class,'store'])->name('posts.like');
 Route::delete('likes/{id}', [\App\Http\Controllers\LikeController::class,'destroy'])->name('likes.destroy');
 
-// Friendships
+
 Route::get('friends', [\App\Http\Controllers\FriendshipController::class,'index'])->name('friends.index');
 Route::post('friends/{id}/send', [\App\Http\Controllers\FriendshipController::class,'store'])->name('friends.send');
 Route::post('friends/{id}/accept', [\App\Http\Controllers\FriendshipController::class,'accept'])->name('friends.accept');
 Route::post('friends/{id}/reject', [\App\Http\Controllers\FriendshipController::class,'reject'])->name('friends.reject');
 Route::delete('friends/{id}/delete', [\App\Http\Controllers\FriendshipController::class,'destroy'])->name('friends.delete');
 
-// Users CRUD
+
 Route::resource('users', \App\Http\Controllers\UserController::class);
 
-// Settings
+
 Route::get('settings', [\App\Http\Controllers\SettingsController::class,'edit'])->name('settings.edit');
 Route::put('settings', [\App\Http\Controllers\SettingsController::class,'update'])->name('settings.update');
 
-// Notifications
+
 Route::get('notifications', [\App\Http\Controllers\NotificationController::class,'index'])->name('notifications.index');
 Route::post('notifications/{id}/read', [\App\Http\Controllers\NotificationController::class,'markRead'])->name('notifications.read');
 
-// API placeholders
+
 Route::prefix('api')->group(function(){
     Route::get('posts', function(){ return response()->json(['message'=>'API posts placeholder']); });
     Route::get('users', function(){ return response()->json(['message'=>'API users placeholder']); });
